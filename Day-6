@@ -1,0 +1,59 @@
+#Password Generator Project
+import random
+#52 Letters
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+#10 Numbers
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+#9 Symbols
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+print("Welcome to the PyPassword Generator!")
+nr_letters= int(input("How many letters would you like in your password?\n")) 
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
+
+#Setting the index and the check for the number of for loops
+letter_index = 0
+symbols_index = 0
+numbers_index = 0
+letter_limit = nr_letters
+symbols_limit = nr_symbols
+numbers_limit = nr_numbers
+
+#Creating an empty string
+generated_password = ""
+
+#for loop for letters list
+for i in letters:
+  #If the number = 0, skip this step.
+  if letter_limit == 0:
+    break
+  # Adding in a random choice from the list of letters to the string. 
+  generated_password += random.choice(letters)
+  #Increasing the index number
+  letter_index += 1
+  #If the index number is the same as the limit, stop the for loop.
+  if letter_index == letter_limit:
+    break
+for i in symbols:
+  #If the number = o, skip this step
+  if symbols_limit == 0:
+    break
+  #Getting a random symbol from the list. 
+  generated_password += random.choice(symbols)
+  symbols_index += 1
+  if symbols_index == symbols_limit:
+    break
+#Rest of the notes apply there as well
+for i in numbers:
+  if numbers_limit == 0:
+    break
+  generated_password += random.choice(numbers)
+  numbers_index += 1
+  if numbers_index == numbers_limit:
+    break
+#Utilizing the string that was created, sampling as a list and then tranforming back to a string
+generated_password = "".join(random.sample(generated_password,len(generated_password)))
+
+#Printing the completed password
+print(f"Here is your password: f{generated_password}")
